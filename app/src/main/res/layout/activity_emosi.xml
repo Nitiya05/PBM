@@ -1,0 +1,152 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/rectangle21"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/tvCatatEmosi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Catat Emosi Pertama Saya"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:padding="12dp" />
+
+    <TextView
+        android:id="@+id/tvPerasaanHariIni"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bagaimana perasaanmu hari ini ?"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_below="@id/tvCatatEmosi"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="12dp" />
+
+    <ImageButton
+        android:id="@+id/ib_senang"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvPerasaanHariIni"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/senang" />
+
+    <ImageButton
+        android:id="@+id/ib_sedih"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvPerasaanHariIni"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/sedih" />
+
+    <ImageButton
+        android:id="@+id/ib_takut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvPerasaanHariIni"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/takut" />
+
+    <ImageButton
+        android:id="@+id/ib_Marah"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvPerasaanHariIni"
+        android:layout_marginStart="220dp"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/marah" />
+
+    <ImageButton
+        android:id="@+id/ib_biasa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvPerasaanHariIni"
+        android:layout_marginStart="300dp"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/biasa" />
+
+
+    <LinearLayout
+        android:id="@+id/llPerasaan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/ib_senang"
+        android:gravity="center"
+        android:layout_marginTop="12dp">
+
+        <TextView
+            android:id="@+id/tvSenang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Senang"
+            android:textColor="@android:color/black"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:layout_weight="1"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/tvSedih"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sedih"
+            android:textColor="@android:color/black"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:layout_weight="1"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/tvTakut"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Takut"
+            android:textColor="@android:color/black"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:layout_weight="1"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/tvMarah"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Marah"
+            android:textColor="@android:color/black"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:layout_weight="1"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/tvBiasaAja"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Biasa aja"
+            android:textColor="@android:color/black"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:layout_weight="1"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/ivGroup4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/button_catat"
+        android:layout_below="@id/llPerasaan"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp" />
+
+</RelativeLayout>

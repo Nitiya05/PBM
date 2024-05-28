@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    tools:context=".HomeFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp">
+
+            <!-- Konten di sini -->
+
+            <TextView
+                android:id="@+id/tv_hello"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Hello 👋"
+                android:textColor="@color/hijau"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/tv_username"
+                android:layout_width="400dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_hello"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Sophia Larson!"
+                android:textColor="@color/hijau"
+                android:textSize="30sp" />
+
+            <!-- Masukkan konten lainnya di sini -->
+
+            <TextView
+                android:id="@+id/tv_inilah"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_username"
+                android:layout_marginStart="8dp"
+                android:text="inilah konten pilihanmu"
+                android:textSize="20sp" />
+
+            <include
+                android:id="@+id/layout_example"
+                layout="@layout/activity_emosi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_below="@id/tv_inilah" />
+
+            <TextView
+                android:id="@+id/tv_grafik"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/layout_example"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Grafik Emosi"
+                android:textColor="@color/hijau"
+                android:textSize="30sp" />
+
+            <include
+                android:id="@+id/layout_grafik"
+                layout="@layout/grafik_emosi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_below="@id/tv_grafik" />
+
+            <TextView
+                android:id="@+id/tv_kisah"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/layout_grafik"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Kisah Inspiratif"
+                android:textColor="@color/hijau"
+                android:textSize="30sp" />
+
+            <include
+                android:id="@+id/layout_kisah"
+                layout="@layout/kisah_inspiratif"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_below="@id/tv_kisah" />
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</FrameLayout>

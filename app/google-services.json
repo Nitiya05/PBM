@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "824448312380",
+    "project_id": "tesya-49cf2",
+    "storage_bucket": "tesya-49cf2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:824448312380:android:46b040fbfec57172348f39",
+        "android_client_info": {
+          "package_name": "com.dicoding.tesya"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIcDiom4-1cEBwZL0jFex7UADljq58L6A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
