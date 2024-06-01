@@ -22,45 +22,47 @@ class ProfileFragment : Fragment() {
         binding = FragmentProfileBinding.inflate(inflater, container, false)
         val view = binding.root
 
-        // Inisialisasi Firebase Authentication
+        // Initialize Firebase Authentication
         auth = FirebaseAuth.getInstance()
 
-        // Mendapatkan pengguna saat ini
-        val currentUser = auth.currentUser
+        // Load user profile
+        loadUserProfile()
 
-        // Set teks TextView tv_nama dengan nama pengguna jika pengguna telah masuk
-        currentUser?.let {
-            val nama = currentUser.displayName
-            if (!nama.isNullOrEmpty()) {
-                binding.tvNama.text = nama
-            }
-
-            // Set teks TextView tv_email dengan email pengguna
-            val email = currentUser.email
-            if (!email.isNullOrEmpty()) {
-                binding.tvEmail.text = email
-            }
-
-            // Set teks TextView tv_alamat dengan password pengguna
-            val password = "******" // Anda mungkin tidak dapat mengakses password pengguna, jadi gunakan placeholder
-            binding.tvAlamat.text = password
-        }
-
-        // Tambahkan onClickListener pada tombol "Edit Profile" untuk mengarahkan ke halaman edit profil
+        // Set onClickListener for Edit Profile button
         binding.btnEditProfil.setOnClickListener {
             startActivity(Intent(context, EditProfileActivity::class.java))
         }
 
-        // Tambahkan onClickListener pada tombol "Keluar" untuk logout
+        // Set onClickListener for Logout button
         binding.btnLogout.setOnClickListener {
-            // Logout pengguna
             auth.signOut()
-
-            // Redirect ke halaman login
             startActivity(Intent(context, LoginActivity::class.java))
             activity?.finish()
         }
 
         return view
+    }
+
+    override fun onResume() {
+        super.onResume()
+        loadUserProfile()
+    }
+
+    private fun loadUserProfile() {
+        val currentUser = auth.currentUser
+        currentUser?.let {
+            val nama = it.displayName
+            if (!nama.isNullOrEmpty()) {
+                binding.tvUserName.text = nama
+            }
+
+            val email = it.email
+            if (!email.isNullOrEmpty()) {
+                binding.tvEmail.text = email
+            }
+
+            val password = "******" // You may not have access to the user's password, so use a placeholder
+            binding.tvAlamat.text = password
+        }
     }
 }

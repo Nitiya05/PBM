@@ -1,5 +1,6 @@
 package com.dicoding.tesya
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -8,6 +9,7 @@ import com.google.firebase.auth.UserProfileChangeRequest
 import com.dicoding.tesya.databinding.ActivityEditProfileBinding
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.android.gms.tasks.Tasks
 
 class EditProfileActivity : AppCompatActivity() {
 
@@ -27,7 +29,6 @@ class EditProfileActivity : AppCompatActivity() {
         // Initialize views using binding
         val editTextName = binding.editTextName
         val etPasswordLogin = binding.etPasswordLogin
-        val editTextAlamat = binding.editTextAlamat
 
         // Fetch current user
         val currentUser = auth.currentUser
@@ -36,7 +37,7 @@ class EditProfileActivity : AppCompatActivity() {
         currentUser?.let { user ->
             editTextName.setText(user.displayName)
             etPasswordLogin.setText("******") // You may not have access to the user's password, so use a placeholder
-            // You can populate other fields here if needed
+            // Populate other fields here if needed, such as phone number and address
         }
 
         // Update button click listener
@@ -44,50 +45,56 @@ class EditProfileActivity : AppCompatActivity() {
             val newName = editTextName.text.toString()
             val newPassword = etPasswordLogin.text.toString()
 
-            // Update display name
-            val profileUpdates = UserProfileChangeRequest.Builder()
-                .setDisplayName(newName)
-                .build()
+            if (currentUser != null) {
+                // Update display name
+                val profileUpdates = UserProfileChangeRequest.Builder()
+                    .setDisplayName(newName)
+                    .build()
 
-            currentUser?.updateProfile(profileUpdates)
-                ?.addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        // Update user data in Realtime Database (optional)
-                        val userId = currentUser.uid
-                        val userReference = database.child("users").child(userId)
-                        userReference.child("fullName").setValue(newName)
-
-                        Toast.makeText(
-                            this,
-                            "User profile updated successfully.",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    } else {
-                        Toast.makeText(
-                            this,
-                            "Failed to update user profile.",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
+                val updateProfileTask = currentUser.updateProfile(profileUpdates)
+                val updatePasswordTask = if (newPassword != "******") {
+                    currentUser.updatePassword(newPassword)
+                } else {
+                    null
                 }
 
-            // Update password
-            currentUser?.updatePassword(newPassword)
-                ?.addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        Toast.makeText(
-                            this,
-                            "User password updated successfully.",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    } else {
-                        Toast.makeText(
-                            this,
-                            "Failed to update user password.",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                val tasks = mutableListOf(updateProfileTask)
+                updatePasswordTask?.let { tasks.add(it) }
+
+                Tasks.whenAllComplete(tasks)
+                    .addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            // Update user data in Realtime Database (optional)
+                            val userId = currentUser.uid
+                            val userReference = database.child("users").child(userId)
+                            userReference.child("fullName").setValue(newName)
+
+                            Toast.makeText(
+                                this,
+                                "User profile updated successfully.",
+                                Toast.LENGTH_SHORT
+                            ).show()
+
+                            // Navigate back to MainActivity
+                            val intent = Intent(this, MainActivity::class.java)
+                            intent.putExtra("navigateTo", "ProfileFragment")
+                            startActivity(intent)
+                            finish()
+                        } else {
+                            Toast.makeText(
+                                this,
+                                "Failed to update user profile.",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
                     }
-                }
+            } else {
+                Toast.makeText(
+                    this,
+                    "No user is currently logged in.",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
         }
 
         // Cancel button click listener
@@ -97,6 +104,3 @@ class EditProfileActivity : AppCompatActivity() {
         }
     }
 }
-
-
-

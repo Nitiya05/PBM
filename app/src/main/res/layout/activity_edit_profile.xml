@@ -13,7 +13,7 @@
         android:layout_height="152dp"
         android:layout_centerHorizontal="true"
         android:contentDescription="@string/app_name"
-        android:src="@drawable/logo" />
+        android:src="@drawable/baseline_account_circle_24" />
 
     <Button
         android:id="@+id/btn_unggah"
@@ -62,7 +62,7 @@
         android:id="@+id/tv_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Telepon"
+        android:text="Password"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/poppins_regular"
         android:layout_below="@id/ev_username"/>
@@ -71,7 +71,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/tv_password"
-        android:hint="Masukan Telepon"
+        android:hint="Masukan Password"
         android:textColorHint="@android:color/darker_gray"
         android:layout_marginTop="8dp"
         app:boxCornerRadiusTopStart="20dp"
@@ -86,41 +86,12 @@
             android:inputType="textPersonName"/>
     </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
-        android:id="@+id/tv_alamat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Password"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/poppins_regular"
-        android:layout_below="@id/ev_password"/>
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/ec_alamat"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tv_alamat"
-        android:hint="MasukanPassword"
-        android:textColorHint="@android:color/darker_gray"
-        android:layout_marginTop="8dp"
-        app:boxCornerRadiusTopStart="20dp"
-        app:boxCornerRadiusBottomEnd="20dp"
-        app:boxCornerRadiusBottomStart="20dp"
-        app:boxCornerRadiusTopEnd="20dp">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextAlamat"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"/>
-    </com.google.android.material.textfield.TextInputLayout>
-
-
     <Button
         android:id="@+id/btnSave"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/ec_alamat"
+        android:layout_below="@id/ev_password"
         android:layout_marginTop="20dp"
         android:backgroundTint="@color/hijau"
         android:text="Simpan"/>
