@@ -5,10 +5,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.google.firebase.auth.FirebaseAuth
 import com.dicoding.tesya.databinding.FragmentProfileBinding
 import com.dicoding.tesya.login.LoginActivity
-import com.google.firebase.auth.FirebaseAuth
 
 class ProfileFragment : Fragment() {
 
@@ -18,49 +19,41 @@ class ProfileFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
+    ): View? {
         binding = FragmentProfileBinding.inflate(inflater, container, false)
-        val view = binding.root
+        return binding.root
+    }
 
-        // Inisialisasi Firebase Authentication
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         auth = FirebaseAuth.getInstance()
-
-        // Mendapatkan pengguna saat ini
         val currentUser = auth.currentUser
 
-        // Set teks TextView tv_nama dengan nama pengguna jika pengguna telah masuk
-        currentUser?.let {
-            val nama = currentUser.displayName
-            if (!nama.isNullOrEmpty()) {
-                binding.tvUserName.text = nama
-            }
-
-            // Set teks TextView tv_email dengan email pengguna
-            val email = currentUser.email
-            if (!email.isNullOrEmpty()) {
-                binding.tvEmail.text = email
-            }
-
-            // Set teks TextView tv_alamat dengan password pengguna
-            val password = "******" // Anda mungkin tidak dapat mengakses password pengguna, jadi gunakan placeholder
-            binding.tvPasswordd.text = password
+        currentUser?.let { user ->
+            // Update UI with user data
+            binding.tvUserName.text = user.displayName
+            binding.tvEmail.text = user.email
         }
 
-        // Tambahkan onClickListener pada tombol "Edit Profile" untuk mengarahkan ke halaman edit profil
         binding.btnEditProfil.setOnClickListener {
-            startActivity(Intent(context, EditProfileActivity::class.java))
+            val intent = Intent(activity, EditProfileActivity::class.java)
+            startActivityForResult(intent, EDIT_PROFILE_REQUEST)
         }
 
-        // Tambahkan onClickListener pada tombol "Keluar" untuk logout
         binding.btnLogout.setOnClickListener {
-            // Logout pengguna
             auth.signOut()
-
-            // Redirect ke halaman login
-            startActivity(Intent(context, LoginActivity::class.java))
+            // Redirect to Login activity
+            val intent = Intent(activity, LoginActivity::class.java)
+            startActivity(intent)
             activity?.finish()
         }
+    }
 
-        return view
+    companion object {
+        private const val EDIT_PROFILE_REQUEST = 1
     }
 }
+
+
+

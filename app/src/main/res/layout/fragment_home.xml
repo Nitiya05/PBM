@@ -16,18 +16,23 @@
             android:layout_height="wrap_content"
             android:padding="8dp">
 
-            <!-- Konten di sini -->
-
             <TextView
                 android:id="@+id/tv_hello"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:fontFamily="@font/poppins_semibold"
                 android:text="Hello 👋"
                 android:textColor="@color/hijau"
                 android:textSize="30sp" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="300dp"
+                android:background="@null"
+                android:src="@mipmap/ic_notification_foreground" />
 
             <TextView
                 android:id="@+id/tv_username"
@@ -65,20 +70,46 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/layout_example"
-                android:layout_marginStart="8dp"
+                android:layout_alignParentEnd="true"
                 android:layout_marginTop="20dp"
+                android:layout_marginEnd="100dp"
                 android:fontFamily="@font/poppins_semibold"
                 android:text="Grafik Emosi"
+                android:textAlignment="center"
                 android:textColor="@color/hijau"
                 android:textSize="30sp" />
 
-            <include
+            <RelativeLayout
                 android:id="@+id/layout_grafik"
-                layout="@layout/grafik_emosi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_below="@id/tv_grafik" />
+                android:layout_below="@id/tv_grafik"
+                android:layout_marginTop="16dp"
+                android:layout_margin="16dp"
+                android:background="@drawable/bg_grafik"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="304dp"
+                    android:layout_height="214dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="31dp"
+                    android:src="@drawable/grafik" />
+
+                <Button
+                    android:id="@+id/btnLihatLebihLanjut"
+                    android:layout_width="209dp"
+                    android:layout_height="48dp"
+                    android:layout_below="@id/imageView"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"
+                    android:text="Lihat Lebih Lanjut"
+                    android:backgroundTint="@color/hijau"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp" />
+
+            </RelativeLayout>
 
             <TextView
                 android:id="@+id/tv_kisah"
@@ -94,7 +125,7 @@
 
             <include
                 android:id="@+id/layout_kisah"
-                layout="@layout/kisah_inspiratif"
+                layout="@layout/item_kisah_inspiratif"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"

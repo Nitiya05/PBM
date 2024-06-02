@@ -1,3 +1,5 @@
+package com.dicoding.tesya
+
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View

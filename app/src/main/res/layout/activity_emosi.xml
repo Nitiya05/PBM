@@ -1,5 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/rectangle21"
@@ -34,7 +35,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/tvPerasaanHariIni"
-        android:layout_marginTop="15dp"
+        android:background="@null"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="20dp"
         android:src="@drawable/senang" />
 
     <ImageButton
@@ -42,8 +45,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/tvPerasaanHariIni"
-        android:layout_marginStart="70dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginStart="90dp"
+        android:background="@null"
+        android:layout_marginTop="20dp"
         android:src="@drawable/sedih" />
 
     <ImageButton
@@ -51,17 +55,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/tvPerasaanHariIni"
-        android:layout_marginStart="150dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginStart="155dp"
+        android:background="@null"
+        android:layout_marginTop="20dp"
         android:src="@drawable/takut" />
 
     <ImageButton
-        android:id="@+id/ib_Marah"
+        android:id="@+id/ib_marah"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/tvPerasaanHariIni"
+        android:background="@null"
         android:layout_marginStart="220dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="20dp"
         android:src="@drawable/marah" />
 
     <ImageButton
@@ -70,8 +76,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/tvPerasaanHariIni"
         android:layout_marginStart="300dp"
-        android:layout_marginTop="15dp"
-        android:src="@drawable/biasa" />
+        android:layout_marginTop="20dp"
+        android:background="@null"
+        android:src="@drawable/biasa"
+        tools:ignore="TouchTargetSizeCheck" />
 
 
     <LinearLayout
@@ -140,13 +148,19 @@
 
     </LinearLayout>
 
-    <ImageButton
-        android:id="@+id/ivGroup4"
+    <Button
+        android:id="@+id/btnCatatEmosi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/button_catat"
         android:layout_below="@id/llPerasaan"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="12dp" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginBottom="20dp"
+        android:gravity="center"
+        android:backgroundTint="@color/hijau"
+        android:text="Catat Emosi Pertama saya"/>
 
 </RelativeLayout>
