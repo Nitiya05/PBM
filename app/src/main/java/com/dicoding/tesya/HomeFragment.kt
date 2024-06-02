@@ -1,5 +1,6 @@
 package com.dicoding.tesya
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -18,7 +19,11 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
-        val view = binding.root
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         // Inisialisasi Firebase Authentication
         auth = FirebaseAuth.getInstance()
@@ -34,6 +39,11 @@ class HomeFragment : Fragment() {
             }
         }
 
-        return view
+        // Atur onClickListener untuk ImageButton ib_notif
+        binding.ibNotif.setOnClickListener {
+            // Ketika ImageButton di klik, arahkan ke NotificationActivity
+            val intent = Intent(requireContext(), NotificationActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

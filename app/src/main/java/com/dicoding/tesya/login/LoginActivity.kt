@@ -14,38 +14,34 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
-import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.ktx.Firebase
+import com.google.android.gms.tasks.Task
 
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
     private lateinit var auth: FirebaseAuth
-    private lateinit var googleSignInClient: GoogleSignInClient
     private lateinit var firestore: FirebaseFirestore
-
-    companion object {
-        private const val RC_SIGN_IN = 9001
-        const val EXTRA_NAMA = "NAMA"
-    }
+    private lateinit var googleSignInClient: GoogleSignInClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        auth = FirebaseAuth.getInstance()
+        auth = Firebase.auth
         firestore = FirebaseFirestore.getInstance()
 
-        // Inisialisasi GoogleSignInOptions
+        // Konfigurasi Google SignIn
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()
             .build()
 
-        // Inisialisasi GoogleSignInClient
         googleSignInClient = GoogleSignIn.getClient(this, gso)
 
         binding.tvToRegister.setOnClickListener {
@@ -57,28 +53,25 @@ class LoginActivity : AppCompatActivity() {
             val email = binding.etEmailLogin.text.toString()
             val password = binding.etPasswordLogin.text.toString()
 
-            // Validasi email
             if (email.isEmpty()) {
                 binding.etEmailLogin.error = "Email Harus Diisi"
                 binding.etEmailLogin.requestFocus()
                 return@setOnClickListener
             }
 
-            // Validasi email tidak sesuai
             if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                 binding.etPasswordLogin.error = "Email Tidak Valid"
                 binding.etPasswordLogin.requestFocus()
                 return@setOnClickListener
             }
 
-            // Validasi password
             if (password.isEmpty()) {
                 binding.etPasswordLogin.error = "Password Harus Diisi"
                 binding.etPasswordLogin.requestFocus()
                 return@setOnClickListener
             }
 
-            // Panggil fungsi loginFirebase dengan menyertakan nama
+            // Lakukan proses login dengan email
             loginFirebase(email, password)
         }
 
@@ -99,9 +92,11 @@ class LoginActivity : AppCompatActivity() {
                                 if (documentSnapshot.exists()) {
                                     val nama = documentSnapshot.getString("nama")
                                     Toast.makeText(this@LoginActivity, "Selamat datang $nama", Toast.LENGTH_SHORT).show()
-                                    // Lanjutkan ke aktivitas utama atau lakukan tindakan lainnya
+
+                                    // Redirect ke MainActivity setelah login berhasil
                                     val intent = Intent(this@LoginActivity, MainActivity::class.java)
                                     startActivity(intent)
+                                    finish()
                                 }
                             }
                             .addOnFailureListener { exception ->
@@ -110,7 +105,7 @@ class LoginActivity : AppCompatActivity() {
                             }
                     }
                 } else {
-                    Toast.makeText(this, "${task.exception?.message}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@LoginActivity, "${task.exception?.message}", Toast.LENGTH_SHORT).show()
                 }
             }
     }
@@ -152,5 +147,9 @@ class LoginActivity : AppCompatActivity() {
         } catch (e: ApiException) {
             Toast.makeText(this, "Error: ${e.message}", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    companion object {
+        private const val RC_SIGN_IN = 9001
     }
 }

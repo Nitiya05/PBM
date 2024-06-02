@@ -97,15 +97,6 @@
         android:backgroundTint="#2C7873"
         android:text="Masuk" />
 
-    <LinearLayout
-        android:id="@+id/tvToRegister"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/btnLogin"
-        android:layout_centerHorizontal="true"
-        android:orientation="horizontal">
-    </LinearLayout>
-
 
     <androidx.cardview.widget.CardView
         android:id="@+id/btnSignInWithGoogle"
@@ -152,16 +143,19 @@
         android:layout_marginTop="20dp"
         android:fontFamily="@font/poppins_regular"
         android:gravity="center"
-        android:layout_marginStart="80dp"
+        android:layout_marginStart="88dp"
         android:layout_below="@id/btnSignInWithGoogle"
         android:text="Belum Punya Akun?"
         android:textColor="@color/black"  />
 
     <TextView
+        android:id="@+id/tvToRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_below="@id/btnSignInWithGoogle"
         android:text="Daftar"
+        android:textColor="@color/hijau"
+        android:textStyle="bold"
         android:layout_marginStart="230dp"/>
 </RelativeLayout>
