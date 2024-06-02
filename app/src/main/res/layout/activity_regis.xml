@@ -43,18 +43,15 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/tv_username"
         android:layout_marginTop="8dp"
-        android:layout_marginStart="10dp"
-        android:hint="Tuliskan Username Anda"
+        android:hint="Masukkan Username"
         android:textColorHint="@android:color/darker_gray"
-        app:boxBackgroundColor="@android:color/white"
         app:boxCornerRadiusBottomEnd="20dp"
         app:boxCornerRadiusBottomStart="20dp"
         app:boxCornerRadiusTopEnd="20dp"
-        app:boxCornerRadiusTopStart="20dp"
-        app:boxBackgroundMode="filled">
+        app:boxCornerRadiusTopStart="20dp">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_namaRegis"
+            android:id="@+id/et_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPersonName" />
@@ -77,21 +74,18 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/tv_email"
         android:layout_marginTop="8dp"
-        android:layout_marginStart="10dp"
+        android:hint="Masukkan Email"
         android:textColorHint="@android:color/darker_gray"
-        app:boxBackgroundColor="@android:color/white"
         app:boxCornerRadiusBottomEnd="20dp"
         app:boxCornerRadiusBottomStart="20dp"
         app:boxCornerRadiusTopEnd="20dp"
-        app:boxCornerRadiusTopStart="20dp"
-        android:hint="Isi Email Anda"
-        app:boxBackgroundMode="filled">
+        app:boxCornerRadiusTopStart="20dp">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_emailRegis"
+            android:id="@+id/et_emailLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textEmailAddress" />
+            android:inputType="textPersonName" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
@@ -106,35 +100,30 @@
         android:fontFamily="@font/poppins_regular"  />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/ev_password"
+        android:id="@+id/ev_pass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/tv_password"
         android:layout_marginTop="8dp"
+        android:hint="Masukkan Email"
         android:textColorHint="@android:color/darker_gray"
-        app:boxBackgroundColor="@android:color/white"
         app:boxCornerRadiusBottomEnd="20dp"
-        android:hint="Isi Password Anda"
         app:boxCornerRadiusBottomStart="20dp"
         app:boxCornerRadiusTopEnd="20dp"
-        app:boxCornerRadiusTopStart="20dp"
-        android:layout_marginStart="10dp"
-        app:boxBackgroundMode="filled"
-        app:endIconContentDescription="Toggle Password Visibility"
-        app:endIconMode="password_toggle">
+        app:boxCornerRadiusTopStart="20dp">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_passwordRegis"
+            android:id="@+id/et_pass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword" />
+            android:inputType="textPersonName" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/btnRegis"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/ev_password"
+        android:layout_below="@id/ev_pass"
         android:layout_marginTop="20dp"
         android:layout_marginStart="10dp"
         android:text="Daftarkan"
@@ -147,7 +136,6 @@
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
         android:stateListAnimator="@null" />
-
 
     <LinearLayout
         android:id="@+id/tvToLogin"
@@ -182,5 +170,4 @@
             android:textStyle="bold" />
 
     </LinearLayout>
-
 </RelativeLayout>
