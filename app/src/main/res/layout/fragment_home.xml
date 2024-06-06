@@ -47,8 +47,6 @@
                 android:textColor="@color/hijau"
                 android:textSize="30sp" />
 
-            <!-- Masukkan konten lainnya di sini -->
-
             <TextView
                 android:id="@+id/tv_inilah"
                 android:layout_width="wrap_content"
